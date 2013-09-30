@@ -1,4 +1,6 @@
 ACM-ICPC
 ========
 
-Written by C and nasm.
+###Implement
+* C
+* Linux nasm 64 bit

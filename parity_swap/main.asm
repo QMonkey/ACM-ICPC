@@ -5,6 +5,7 @@ section	.data
 section	.text
 	global	_start
 	extern	atoi
+	extern	parity_swap
 
 _start:
 .intsize	equ	4
@@ -27,6 +28,7 @@ _start:
 .endjudge:
 	mov	rax,.intsize
 	imul	rax,rcx
+	mov	rdx,rax
 
 	sub	rsp,rax
 	mov	rbx,rsp
@@ -38,6 +40,11 @@ _start:
 	add	rbx,.intsize
 	add	rsi,8
 	loop	.lp
+
+	mov	rdi,rsp
+	mov	rsi,rdi
+	add	rsi,rdx
+	call	parity_swap
 
 	mov	rax,60
 	mov	rdi,1
