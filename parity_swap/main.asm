@@ -1,51 +1,33 @@
 section	.data
-	errmsg	db	'No enough parameters.',0x0A
-	len	equ	$-errmsg
+	format	db	'%s',0x0A,0
+	newline	db	0x0A,0
 
 section	.text
 	global	_start
 	extern	atoi
+	extern	printf
+	extern	exit
 	extern	parity_swap
 
 _start:
-.intsize	equ	4
-	mov	rsi,rsp
-	mov	rcx,[rsi]
-	dec	rcx
-        test    rcx,rcx
-        jnz     .endjudge
+	mov	rdx,[rsp]
+	lea	rbx,[rsp+8]
+;	dec	rcx
+;	mov	rax,rcx
+;	mov	rdx,4
+;	imul	rdx
+;	sub	rsp,rax
 
-        mov     rax,1
-        mov     rdi,2
-        mov     rsi,errmsg
-        mov     rdx,len
-        syscall
-
-        mov     rax,60
-        mov     rdi,1
-        syscall
-
-.endjudge:
-	mov	rax,.intsize
-	imul	rax,rcx
-	mov	rdx,rax
-
-	sub	rsp,rax
-	mov	rbx,rsp
-	add	rsi,16
 .lp:
-	mov	rdi,[rsi]
-	call	atoi
-	mov	[rbx],eax
-	add	rbx,.intsize
-	add	rsi,8
-	loop	.lp
+	mov	rdi,format
+	mov	rsi,[rbx]
+	call	printf
+	add	rbx,8
+	cmp	rdx,0
+	jle	.endlp
+	dec	rdx
+	jmp	.lp
+.endlp:
 
-	mov	rdi,rsp
-	mov	rsi,rdi
-	add	rsi,rdx
-	call	parity_swap
-
-	mov	rax,60
-	mov	rdi,1
-	syscall
+	mov	rdi,0
+	call	exit
