@@ -1,5 +1,5 @@
-PROG = integer_division
-OBJS = main.o integer_division.o
+PROG = merge_stones
+OBJS = main.o merge_stones.o
 CC = gcc
 
 all: $(PROG)

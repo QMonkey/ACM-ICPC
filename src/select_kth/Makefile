@@ -5,10 +5,12 @@ CC = gcc
 all: $(PROG)
 
 $(PROG): $(OBJS)
-	$(CC) $(OBJS) -o $@
+	make -C ../partition
+	$(CC) $(OBJS) -g -o $@ ../partition/partition.o
 
 %.o: %.c
-	$(CC) -c $<
+	$(CC) -g -c $< -I ../../include
 
 clean:
+	make clean -C ../partition
 	-rm -rf $(OBJS) $(PROG)

@@ -8,7 +8,7 @@ $(PROG): $(OBJS)
 	$(CC) $(OBJS) -o $@
 
 %.o: %.c
-	$(CC) -c $<
+	$(CC) -c $< -I ../../include
 
 clean:
 	-rm -rf $(OBJS) $(PROG)

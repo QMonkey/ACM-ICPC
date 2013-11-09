@@ -22,8 +22,11 @@ int main(int argc,char **argv)
 	for(i = 0; i < size; ++i)
 	{
 		array[i] = atoi(argv[i + 2]);
+		fprintf(stdout,"%d ",array[i]);
 	}
-	int k = atoi(argv[i + 1]);
+	fprintf(stdout,"\n");
+
+	int k = atoi(argv[1]);
 	fprintf(stdout,"%d\n",*select_kth(array,array + size,k,greater));
 	free(array);
 	return 0;

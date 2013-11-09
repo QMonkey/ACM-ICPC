@@ -11,10 +11,10 @@ parity_swap_nasm: $(NASMOBJS)
 	ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 $(NASMOBJS) -o $@
 
 parity_swap_c.o: parity_swap.c
-	gcc -c $< -o $@
+	gcc -c $< -o $@ -I ../../include
 
 main_c.o: main.c
-	gcc -c $< -o $@
+	gcc -c $< -o $@ -I ../../include
 
 parity_swap_nasm.o: parity_swap.asm
 	nasm -f elf64 $< -o $@ -l $*.lst
