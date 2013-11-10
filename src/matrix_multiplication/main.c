@@ -23,6 +23,7 @@ int main(int argc,char **argv)
 	fprintf(stdout,"\n");
 
 	fprintf(stdout,"%u\n",min_matrix_multiplication(array,array+size));
+	fprintf(stdout,"%u\n",dp_min_matrix_multiplication(array,array+size));
 
 	free(array);
 	return 0;
