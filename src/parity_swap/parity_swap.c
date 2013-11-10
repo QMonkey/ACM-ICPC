@@ -18,7 +18,7 @@ void parity_swap(int32_t *start,int32_t *end)
 		{
 			break;
 		}
-		int32_t tmp = *start;
+		uint32_t tmp = *start;
 		*start = *end;
 		*end = tmp;
 	}

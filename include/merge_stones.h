@@ -11,7 +11,7 @@ extern "C"
 {
 #endif
 
-extern int32_t merge_stones(int32_t*,int32_t*,int (*)(int32_t,int32_t));
+extern uint32_t merge_stones(uint32_t*,uint32_t*,int (*)(uint32_t,uint32_t));
 
 #ifdef __cplusplus
 }

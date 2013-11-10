@@ -3,16 +3,16 @@
 
 #include "chess_board.h"
 
-static int point_pos(Area *area,Pos *pos)
+static uint32_t point_pos(Area *area,Pos *pos)
 {
-	int offset = area->size >> 1;
+	uint32_t offset = area->size >> 1;
 	Pos middle = {area->begin.x + offset,area->begin.y + offset};
-	int less = pos->y < middle.y;
+	uint32_t less = pos->y < middle.y;
 
 	return pos->x < middle.x ? (less ? 0 : 3) : (less ? 1 : 3);
 }
 
-static void center_pos(Area *area,int direct,Pos *pos)
+static void center_pos(Area *area,uint32_t direct,Pos *pos)
 {
 	pos->x = area->begin.x + (area->size >> 1);
 	pos->y = area->begin.y + (area->size >> 1);
@@ -34,7 +34,7 @@ static void center_pos(Area *area,int direct,Pos *pos)
 	}
 }
 
-static void subarea(Area *src,int direct,Area *dest)
+static void subarea(Area *src,uint32_t direct,Area *dest)
 {
 	dest->size = src->size >> 1;
 	switch(direct)
@@ -77,7 +77,7 @@ void chess_board(Area area,Pos pos)
 	center_pos(&area,2,&poslb);
 	center_pos(&area,3,&posrb);
 
-	int pnum = point_pos(&area,&pos);
+	uint32_t pnum = point_pos(&area,&pos);
 
 	switch(pnum)
 	{

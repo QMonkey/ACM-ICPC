@@ -8,7 +8,7 @@ extern "C"
 {
 #endif
 
-extern int32_t closest_point(int32_t *begin,int32_t *end);
+extern uint32_t closest_point(int32_t *begin,int32_t *end);
 
 #ifdef __cplusplus
 }

@@ -3,7 +3,7 @@
 
 #include "hanoi.h"
 
-void hanoi(int32_t level,int src,int auxiliary,int dest)
+void hanoi(uint32_t level,int src,int auxiliary,int dest)
 {
 	if(level > 0)
 	{

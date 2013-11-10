@@ -2,9 +2,9 @@
 
 #include "integer_division.h"
 
-int32_t integer_division(int32_t number,int32_t max)
+uint32_t integer_division(uint32_t number,uint32_t max)
 {
-	int32_t result = 0;
+	uint32_t result = 0;
 	if(number == 1 || max == 1)
 	{
 		result = 1;

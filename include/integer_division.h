@@ -8,7 +8,7 @@ extern "C"
 {
 #endif
 
-extern int32_t integer_division(int32_t number,int32_t max);
+extern uint32_t integer_division(uint32_t number,uint32_t max);
 
 #ifdef __cplusplus
 }

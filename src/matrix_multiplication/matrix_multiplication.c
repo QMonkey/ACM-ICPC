@@ -3,8 +3,6 @@
 
 #include "matrix_multiplication.h"
 
-#define INFINITY 0xFFFFFFFF
-
 uint32_t min_matrix_multiplication(uint32_t *begin,uint32_t *end)
 {
 	if(end - begin < 3)
@@ -12,7 +10,7 @@ uint32_t min_matrix_multiplication(uint32_t *begin,uint32_t *end)
 		return 0;
 	}
 
-	uint32_t min = INFINITY;
+	uint32_t min = UINT32_MAX;
 	uint32_t *splitter = NULL;
 	uint32_t *splitter_end = end - 1;
 	for(splitter = begin + 1; splitter != splitter_end; ++splitter)

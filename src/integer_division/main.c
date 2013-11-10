@@ -12,7 +12,7 @@ int main(int argc,char **argv)
 		exit(1);
 	}
 
-	int32_t number = atoi(argv[1]);
+	uint32_t number = atoi(argv[1]);
 	fprintf(stdout,"%d\n",integer_division(number,number));
 	return 0;
 }

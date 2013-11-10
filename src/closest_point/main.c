@@ -11,7 +11,7 @@ int main(int argc,char **argv)
 		fprintf(stderr,"No enough parameter.\n");
 		exit(1);
 	}
-	int32_t size = argc - 1;
+	uint32_t size = argc - 1;
 	int32_t *array = (int32_t*)malloc(sizeof(int32_t) * size);
 	int i;
 	for(i = 0; i < size; ++i)
