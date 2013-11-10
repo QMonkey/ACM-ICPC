@@ -28,6 +28,11 @@ int main(int argc,char **argv)
 
 	int k = atoi(argv[1]);
 	fprintf(stdout,"%d\n",*select_kth(array,array + size,k,greater));
+	for(i = 0; i < size; ++i)
+	{
+		fprintf(stdout,"%d ",array[i]);
+	}
+	fprintf(stdout,"\n");
 	free(array);
 	return 0;
 }
