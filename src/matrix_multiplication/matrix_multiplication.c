@@ -97,15 +97,11 @@ uint32_t min_matrix_multiplication(uint32_t *begin,uint32_t *end)
 
 uint32_t dp_min_matrix_multiplication4(uint32_t *m_chain,uint32_t *begin,uint32_t *end,resultset_t *rs)
 {
-	if(end - begin < 3)
+	int32_t x = begin - m_chain;
+	int32_t y = end - m_chain - 1;
+	if(y - x < 2)
 	{
-		int32_t x = begin - m_chain;
-		int32_t y = end - m_chain - 1;
-		if(!isset_resultset(rs,x,y))
-		{
-			set_resultset(rs,x,y,0);
-		}
-		return get_resultset(rs,x,y);
+		return 0;
 	}
 
 	uint32_t min = UINT32_MAX;
@@ -113,31 +109,24 @@ uint32_t dp_min_matrix_multiplication4(uint32_t *m_chain,uint32_t *begin,uint32_
 	uint32_t *splitter_end = end - 1;
 	for(splitter = begin + 1; splitter != splitter_end; ++splitter)
 	{
-		int32_t left_x = begin - m_chain;
-		int32_t left_y = splitter - m_chain;
-		int32_t right_x = left_y;
-		int32_t right_y = end - m_chain - 1;
-		if(!isset_resultset(rs,left_x,left_y))
+		int32_t splitter_index = splitter - m_chain;
+		if(!isset_resultset(rs,x,splitter_index))
 		{
-			set_resultset(rs,left_x,left_y,dp_min_matrix_multiplication4(m_chain,begin,splitter + 1,rs));
+			dp_min_matrix_multiplication4(m_chain,begin,splitter + 1,rs);
 		}
-		if(!isset_resultset(rs,right_x,right_y))
+		if(!isset_resultset(rs,splitter_index,y))
 		{
-			set_resultset(rs,right_x,right_y,dp_min_matrix_multiplication4(m_chain,splitter,end,rs));
+			dp_min_matrix_multiplication4(m_chain,splitter,end,rs);
 		}
-		if(!isset_resultset(rs,left_x,right_y))
-		{
-			set_resultset(rs,left_x,right_y,*begin * *splitter * *(end - 1));
-		}
-		uint32_t left_times = get_resultset(rs,left_x,left_y);
-		uint32_t right_times = get_resultset(rs,right_x,right_y);
-		uint32_t last_times = get_resultset(rs,left_x,right_y);
-		uint32_t times = left_times + right_times + last_times;
+		uint32_t left_times = get_resultset(rs,x,splitter_index);
+		uint32_t right_times = get_resultset(rs,splitter_index,y);
+		uint32_t times = left_times + right_times + *begin * *splitter * *(end - 1);
 		if(min > times)
 		{
 			min = times;
 		}
 	}
+	set_resultset(rs,x,y,min);
 
 	return min;
 }

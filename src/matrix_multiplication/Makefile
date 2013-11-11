@@ -5,10 +5,10 @@ CC = gcc
 all: $(PROG)
 
 $(PROG): $(OBJS)
-	$(CC) $(OBJS) -o $@
+	$(CC) $(OBJS) -g -o $@
 
 %.o: %.c
-	$(CC) -c $< -I ../../include
+	$(CC) -g -c $< -I ../../include
 
 clean:
 	-rm -rf $(OBJS) $(PROG)
