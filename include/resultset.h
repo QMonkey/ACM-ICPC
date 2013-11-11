@@ -22,7 +22,6 @@ extern uint32_t get_resultset(resultset_t *rs,int32_t x,int32_t y);
 extern void set_resultset(resultset_t *rs,int32_t x,int32_t y,uint32_t value);
 extern int isset_resultset(resultset_t *rs,int32_t x,int32_t y);
 extern int destroy_resultset(resultset_t *rs);
-extern uint32_t dp_min_matrix_multiplication4(uint32_t *m_chain,uint32_t *begin,uint32_t *end,resultset_t *rs);
 
 #ifdef __cplusplus
 }

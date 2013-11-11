@@ -6,6 +6,8 @@
 #include "resultset.h"
 #include "matrix_multiplication.h"
 
+static uint32_t dp_min_matrix_multiplication4(uint32_t *m_chain,uint32_t *begin,uint32_t *end,resultset_t *rs);
+
 uint32_t min_matrix_multiplication(uint32_t *begin,uint32_t *end)
 {
 	if(end - begin < 3)
