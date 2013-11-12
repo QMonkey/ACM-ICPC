@@ -1,4 +1,4 @@
-OBJS = resultset.o
+OBJS = resultset.o heap.o
 CC = gcc
 
 all: $(OBJS)
