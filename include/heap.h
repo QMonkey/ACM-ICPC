@@ -17,6 +17,9 @@ extern "C"
 
 extern void build_heap(uint32_t *begin,uint32_t *end);
 extern void heapify(uint32_t *begin,uint32_t *end,uint32_t *current);
+extern uint32_t heap_top(uint32_t *begin,uint32_t *end);
+extern void heap_pop(uint32_t *begin,uint32_t *end);
+extern void heap_push(uint32_t *begin,uint32_t *end,uint32_t value);
 
 #ifdef __cplusplus
 }
