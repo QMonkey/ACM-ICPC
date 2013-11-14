@@ -86,3 +86,7 @@ uint32_t dp_zero_one_knapsack(item_t *begin,item_t *end,uint32_t kweight)
 	destroy_resultset(rs);
 	return res;
 }
+
+uint32_t knapsack(item_t *begin,item_t *end,uint32_t kweight)
+{
+}

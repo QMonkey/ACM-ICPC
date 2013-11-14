@@ -4,36 +4,26 @@
 
 #include "merge_stones.h"
 
-static int isGreater(int32_t first,int32_t second)
-{
-	return first > second ? 1 : (first == second ? 0 : -1);
-}
-
-static int isLess(int32_t first,int32_t second)
-{
-	return first < second ? 1 : (first == second ? 0 : -1);
-}
-
 int main(int argc,char **argv)
 {
 	if(argc < 2)
 	{
-		fprintf(stderr,"No enough parameters.\n");
+		fprintf(stderr,"No enough parameter.\n");
 		exit(1);
 	}
 
-	int32_t *array = (int32_t*)malloc(sizeof(int32_t)*argc);
+	uint32_t size = argc - 1;
+	uint32_t *array = (uint32_t*)malloc(sizeof(uint32_t) * size);
 	int i;
-	for(i = 1; i < argc; ++i)
+	for(i = 0; i < size; ++i)
 	{
-		array[i] = atoi(argv[i]);
+		array[i] = atoi(argv[i + 1]);
+		fprintf(stdout,"%d ",array[i]);
 	}
-	array[0] = array[argc-1];
+	fprintf(stdout,"\n");
 
-	fprintf(stdout,"%d  %d\n",merge_stones(array+1,array+argc,isLess),
-		merge_stones(array+1,array+argc,isGreater));
-	fprintf(stdout,"%d  %d\n",merge_stones(array,array+argc,isLess),
-		merge_stones(array,array+argc,isGreater));
-
+	fprintf(stdout,"%d\n",merge_stones(array,array+size));
+	
+	free(array);
 	return 0;
 }

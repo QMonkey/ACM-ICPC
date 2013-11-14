@@ -21,6 +21,7 @@ extern item_t* create_item(uint32_t weight,uint32_t value);
 extern int destroy_item(item_t *item);
 extern uint32_t zero_one_knapsack(item_t *begin,item_t *end,uint32_t kweight);
 extern uint32_t dp_zero_one_knapsack(item_t *begin,item_t *end,uint32_t kweight);
+extern uint32_t knapsack(item_t *begin,item_t *end,uint32_t kweight);
 
 #ifdef __cplusplus
 }

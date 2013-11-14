@@ -5,10 +5,12 @@ CC = gcc
 all: $(PROG)
 
 $(PROG): $(OBJS)
-	$(CC) $(OBJS) -o $@
+	make -C ../utils
+	$(CC) $(OBJS) -o $@ ../utils/resultset.o
 
 %.o: %.c
 	$(CC) -c $< -I ../../include
 
 clean:
+	make clean -C ../utils
 	-rm -rf $(OBJS) $(PROG)
