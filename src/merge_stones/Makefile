@@ -6,10 +6,10 @@ all: $(PROG)
 
 $(PROG): $(OBJS)
 	make -C ../utils
-	$(CC) $(OBJS) -o $@ ../utils/resultset.o
+	$(CC) $(OBJS) -g -o $@ ../utils/resultset.o
 
 %.o: %.c
-	$(CC) -c $< -I ../../include
+	$(CC) -g -c $< -I ../../include
 
 clean:
 	make clean -C ../utils

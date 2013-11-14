@@ -23,6 +23,7 @@ int main(int argc,char **argv)
 	fprintf(stdout,"\n");
 
 	fprintf(stdout,"%d\n",merge_stones(array,array+size));
+	fprintf(stdout,"%d\n",dp_merge_stones(array,array+size));
 	
 	free(array);
 	return 0;
