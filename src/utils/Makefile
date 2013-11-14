@@ -1,4 +1,4 @@
-OBJS = resultset.o heap.o
+OBJS = resultset.o heap.o insertion_sort.o
 CC = gcc
 
 all: $(OBJS)
