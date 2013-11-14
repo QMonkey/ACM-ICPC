@@ -4,7 +4,7 @@ CC = gcc
 all: $(OBJS)
 
 %.o: %.c
-	$(CC) -c $< -I ../../include
+	$(CC) -g -c $< -I ../../include
 
 clean:
 	-rm -rf $(OBJS) $(PROG)
