@@ -3,12 +3,12 @@
 
 #include "hanoi.h"
 
-void hanoi(uint32_t level,int src,int auxiliary,int dest)
+void hanoi(uint32_t level,char *src,char *auxiliary,char *dest)
 {
 	if(level > 0)
 	{
 		hanoi(level-1,src,dest,auxiliary);
-		fprintf(stdout,"(%d,%d)\n",src,dest);
+		fprintf(stdout,"(%s,%s)\n",src,dest);
 		hanoi(level-1,auxiliary,src,dest);
 	}
 }

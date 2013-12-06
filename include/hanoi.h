@@ -8,7 +8,7 @@ extern "C"
 {
 #endif
 
-extern void hanoi(uint32_t level,int src,int auxiliary,int dest);
+extern void hanoi(uint32_t level,char *src,char *auxiliary,char *dest);
 
 #ifdef __cplusplus
 }
