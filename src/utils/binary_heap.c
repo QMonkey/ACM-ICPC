@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -34,20 +35,64 @@ void binary_heap_swim(binary_heap_t *heap, int current)
 	if(current > 1)
 	{
 		int *elements = heap->elements;
-		int parent = current >> 1;
+		int parent = BINARY_HEAP_PARENT(current);
+		if(!heap->comparator(elements[parent], elements[current]))
+		{
+			int tmp = elements[parent];
+			elements[parent] = elements[current];
+			elements[current] = tmp;
+
+			binary_heap_swim(heap, parent);
+		}
 	}
 }
 
 void binary_heap_sink(binary_heap_t *heap, int current)
 {
+	uint32_t end = heap->capacity >> 1;
+	if(current <= end)
+	{
+		int *elements = heap->elements;
+		uint32_t left = BINARY_HEAP_LEFT(current);
+		uint32_t right = BINARY_HEAP_RIGHT(current);
+		uint32_t idx = current;
+		if(!heap->comparator(elements[idx], elements[left]))
+		{
+			idx = left;
+		}
+		if(right <= end && !heap->comparator(elements[idx], elements[right]))
+		{
+			idx = right;
+		}
+		if(idx != current)
+		{
+			int tmp = elements[idx];
+			elements[idx] = elements[current];
+			elements[current] = tmp;
+
+			binary_heap_sink(heap, idx);
+		}
+	}
 }
 
 void binary_heap_push(binary_heap_t *heap, int elem)
 {
+	if(heap->capacity == heap->size)
+	{
+		binary_heap_resize(heap, heap->size << 1);
+	}
+	heap->elements[++heap->capacity] = elem;
+	binary_heap_swim(heap, heap->capacity);
 }
 
 void binary_heap_pop(binary_heap_t *heap)
 {
+	if(heap->capacity > 0)
+	{
+		int *elements = heap->elements;
+		elements[1] = elements[heap->capacity--];
+		binary_heap_sink(heap, 1);
+	}
 }
 
 int binary_heap_top(binary_heap_t *heap)

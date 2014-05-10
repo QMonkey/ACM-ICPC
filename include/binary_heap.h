@@ -11,6 +11,10 @@ typedef struct binary_heap_s
 	int (*comparator)(int,int);
 } binary_heap_t;
 
+#define BINARY_HEAP_PARENT(idx) (idx >> 1)
+#define BINARY_HEAP_LEFT(idx) (idx << 1)
+#define BINARY_HEAP_RIGHT(idx) (BINARY_HEAP_LEFT(idx) + 1)
+
 #ifdef __cplusplus
 extern "C"
 {
